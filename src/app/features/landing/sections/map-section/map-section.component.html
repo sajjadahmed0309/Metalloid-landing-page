@@ -44,12 +44,24 @@
         [attr.aria-label]="marker.city"
         [attr.aria-expanded]="activeMarkerId() === marker.id"
       >
-        <img
-          src="assets/_Map location marker.svg"
-          alt=""
+        <svg
           class="map-section__marker-icon"
+          viewBox="72 126 60 60"
+          xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
-        />
+          focusable="false"
+        >
+          <g class="map-section__marker-pulse">
+            <rect x="78" y="132" width="48" height="48" rx="24" fill="#A20E20" opacity="0.35"/>
+          </g>
+          <rect x="88" y="142" width="28" height="28" rx="14" fill="#A20E20" filter="url(#markerShadow)"/>
+          <rect x="98" y="152" width="8" height="8" rx="4" fill="white"/>
+          <defs>
+            <filter id="markerShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#A20E20" flood-opacity="0.45"/>
+            </filter>
+          </defs>
+        </svg>
 
         @if (activeMarkerId() === marker.id) {
           <div class="map-section__tooltip" role="tooltip">
