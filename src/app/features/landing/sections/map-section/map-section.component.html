@@ -1,0 +1,63 @@
+<section class="map-section section" id="presence" aria-labelledby="presence-heading">
+  <div class="container">
+
+    <div class="map-section__header">
+      <h2 class="map-section__title" id="presence-heading">OUR PRESENCE</h2>
+    </div>
+
+    <div class="map-section__tabs-wrapper">
+      <div class="map-section__tabs" role="tablist" aria-label="Regional presence tabs">
+        @for (tab of tabs; track tab.id) {
+          <button
+            class="map-section__tab"
+            [class.map-section__tab--active]="activeTabId() === tab.id"
+            (click)="selectTab(tab.id)"
+            type="button"
+            role="tab"
+            [attr.aria-selected]="activeTabId() === tab.id"
+            [id]="'tab-' + tab.id"
+          >
+            {{ tab.label }}
+          </button>
+        }
+      </div>
+    </div>
+
+  </div>
+
+  <div class="map-section__map-wrapper" role="region" aria-label="Map showing operation locations">
+    <img
+      src="assets/map image.png"
+      alt="World map showing AXEOR presence"
+      class="map-section__map-image"
+      loading="lazy"
+    />
+
+    @for (marker of activeTab.markers; track marker.id) {
+      <button
+        class="map-section__marker"
+        [class.map-section__marker--active]="activeMarkerId() === marker.id"
+        [style.top]="marker.top"
+        [style.left]="marker.left"
+        (click)="toggleMarker(marker.id)"
+        type="button"
+        [attr.aria-label]="marker.city"
+        [attr.aria-expanded]="activeMarkerId() === marker.id"
+      >
+        <img
+          src="assets/_Map location marker.svg"
+          alt=""
+          class="map-section__marker-icon"
+          aria-hidden="true"
+        />
+
+        @if (activeMarkerId() === marker.id) {
+          <div class="map-section__tooltip" role="tooltip">
+            <strong class="map-section__tooltip-city">{{ marker.city }}</strong>
+            <p class="map-section__tooltip-address">{{ marker.address }}</p>
+          </div>
+        }
+      </button>
+    }
+  </div>
+</section>

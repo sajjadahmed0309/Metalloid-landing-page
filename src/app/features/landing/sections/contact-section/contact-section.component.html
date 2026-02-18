@@ -1,0 +1,137 @@
+<section class="contact section" id="contact" aria-labelledby="contact-heading">
+  <div class="container contact__grid">
+
+    <div class="contact__form-col">
+
+      @if (submitted()) {
+        <div class="contact__success" role="alert">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="var(--color-primary)" stroke-width="1.5"/>
+            <path d="M8 12l3 3 5-5" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Message sent!</h3>
+          <p>Thank you for reaching out. Our team will be in touch with you shortly.</p>
+        </div>
+      } @else {
+        <h2 class="contact__heading" id="contact-heading">Contact us</h2>
+        <p class="contact__subheading">Our friendly team would love to hear from you.</p>
+
+        <form class="contact__form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+          <div class="contact__row">
+            <div class="contact__field">
+              <label class="contact__label" for="firstName">First name</label>
+              <input
+                id="firstName"
+                type="text"
+                class="contact__input"
+                [class.contact__input--error]="isInvalid('firstName')"
+                formControlName="firstName"
+                placeholder="First name"
+                autocomplete="given-name"
+              />
+              @if (isInvalid('firstName')) {
+                <span class="contact__error">Please enter your first name</span>
+              }
+            </div>
+            <div class="contact__field">
+              <label class="contact__label" for="lastName">Last name</label>
+              <input
+                id="lastName"
+                type="text"
+                class="contact__input"
+                [class.contact__input--error]="isInvalid('lastName')"
+                formControlName="lastName"
+                placeholder="Last name"
+                autocomplete="family-name"
+              />
+              @if (isInvalid('lastName')) {
+                <span class="contact__error">Please enter your last name</span>
+              }
+            </div>
+          </div>
+
+          <div class="contact__field">
+            <label class="contact__label" for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              class="contact__input"
+              [class.contact__input--error]="isInvalid('email')"
+              formControlName="email"
+              placeholder="you&#64;company.com"
+              autocomplete="email"
+            />
+            @if (isInvalid('email')) {
+              <span class="contact__error">Please enter a valid email address</span>
+            }
+          </div>
+
+          <div class="contact__field">
+            <label class="contact__label" for="phone">Phone number</label>
+            <div class="contact__phone-wrapper">
+              <span class="contact__phone-prefix">UAE</span>
+              <input
+                id="phone"
+                type="tel"
+                class="contact__input contact__input--phone"
+                [class.contact__input--error]="isInvalid('phone')"
+                formControlName="phone"
+                placeholder="+971 000-000-000"
+                autocomplete="tel"
+              />
+            </div>
+            @if (isInvalid('phone')) {
+              <span class="contact__error">Please enter your phone number</span>
+            }
+          </div>
+
+          <div class="contact__field">
+            <label class="contact__label" for="message">Message</label>
+            <textarea
+              id="message"
+              class="contact__textarea"
+              [class.contact__input--error]="isInvalid('message')"
+              formControlName="message"
+              placeholder="Leave us a message..."
+              rows="5"
+            ></textarea>
+            @if (isInvalid('message')) {
+              <span class="contact__error">Please enter a message</span>
+            }
+          </div>
+
+          <div class="contact__privacy">
+            <input
+              id="privacy"
+              type="checkbox"
+              class="contact__checkbox"
+              formControlName="privacy"
+            />
+            <label for="privacy" class="contact__privacy-label">
+              You agree to our friendly
+              <a href="#privacy" class="contact__privacy-link">privacy policy</a>.
+            </label>
+          </div>
+          @if (isInvalid('privacy')) {
+            <span class="contact__error">You must agree to the privacy policy</span>
+          }
+
+          <button type="submit" class="contact__submit">Send message</button>
+
+        </form>
+      }
+
+    </div>
+
+    <div class="contact__image-col" aria-hidden="true">
+      <img
+        src="assets/contact us.jpg"
+        alt="AXEOR team in a professional meeting"
+        class="contact__image"
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>

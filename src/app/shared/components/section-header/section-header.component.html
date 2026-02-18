@@ -1,0 +1,11 @@
+<div class="section-header" [class]="'section-header section-header--' + align + ' section-header--' + theme">
+  @if (subheading) {
+    <span class="section-header__subheading">{{ subheading }}</span>
+  }
+  @if (heading) {
+    <h2 class="section-header__heading">{{ heading }}</h2>
+  }
+  @if (description) {
+    <p class="section-header__description">{{ description }}</p>
+  }
+</div>

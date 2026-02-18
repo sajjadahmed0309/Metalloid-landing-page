@@ -1,0 +1,33 @@
+<section class="competencies" id="competencies" aria-labelledby="competencies-heading">
+
+  <div class="container competencies__header">
+    <h2 class="competencies__title" id="competencies-heading">CORE COMPETENCIES</h2>
+  </div>
+
+  @for (item of competencies; track item.heading; let i = $index) {
+    <div
+      class="competencies__item"
+      [class.competencies__item--gray]="i % 2 !== 0"
+    >
+      <div
+        class="container competencies__grid"
+        [class.competencies__grid--reversed]="item.imagePosition === 'right'"
+      >
+        <div class="competencies__image-col">
+          <img
+            [src]="item.imageSrc"
+            [alt]="item.imageAlt"
+            class="competencies__image"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="competencies__text-col">
+          <h3 class="competencies__heading">{{ item.heading }}</h3>
+          <p class="competencies__description">{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  }
+
+</section>

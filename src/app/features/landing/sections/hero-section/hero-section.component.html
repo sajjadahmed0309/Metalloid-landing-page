@@ -1,0 +1,47 @@
+<section class="hero" id="home" aria-label="Hero slideshow">
+
+  <div class="hero__slides" aria-live="polite" aria-atomic="true">
+    @for (slide of slides; track slide.image; let i = $index) {
+      <div
+        class="hero__slide"
+        [class.hero__slide--active]="activeSlide() === i"
+        [attr.aria-hidden]="activeSlide() !== i"
+      >
+        <img
+          [src]="slide.image"
+          [alt]="slide.imageAlt"
+          class="hero__slide-image"
+        />
+        <div class="hero__slide-overlay" aria-hidden="true"></div>
+      </div>
+    }
+  </div>
+
+  <div class="hero__content">
+    <div class="container">
+      <p class="hero__label">{{ slides[activeSlide()].label }}</p>
+      <h1 class="hero__heading">
+        {{ slides[activeSlide()].headline1 }}
+        @if (slides[activeSlide()].headline2) {
+          <br />{{ slides[activeSlide()].headline2 }}
+        }
+      </h1>
+      <p class="hero__subtitle">{{ slides[activeSlide()].subtitle }}</p>
+    </div>
+  </div>
+
+  <div class="hero__dots" role="tablist" aria-label="Slideshow navigation">
+    @for (slide of slides; track slide.image; let i = $index) {
+      <button
+        class="hero__dot"
+        [class.hero__dot--active]="activeSlide() === i"
+        (click)="goToSlide(i)"
+        type="button"
+        role="tab"
+        [attr.aria-selected]="activeSlide() === i"
+        [attr.aria-label]="'Go to slide ' + (i + 1)"
+      ></button>
+    }
+  </div>
+
+</section>

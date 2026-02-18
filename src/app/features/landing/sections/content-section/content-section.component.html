@@ -1,0 +1,49 @@
+<section
+  class="content-section section"
+  [class]="'content-section section content-section--' + (data.theme || 'white')"
+>
+  <div
+    class="container content-section__grid"
+    [class.content-section__grid--reversed]="data.imagePosition === 'right'"
+  >
+
+    <div class="content-section__image-col">
+      <img
+        [src]="data.imageSrc"
+        [alt]="data.imageAlt"
+        class="content-section__image"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="content-section__text-col">
+      <h2 class="content-section__heading">{{ data.heading }}</h2>
+
+      <p class="content-section__description">{{ data.description }}</p>
+
+      @if (data.bodyText) {
+        <p class="content-section__body">{{ data.bodyText }}</p>
+      }
+
+      @if (data.primaryButton || data.secondaryButton) {
+        <div class="content-section__actions">
+          @if (data.secondaryButton) {
+            <a
+              [href]="data.secondaryButton.href"
+              class="btn btn--ghost"
+              [attr.aria-label]="data.secondaryButton.label"
+            >{{ data.secondaryButton.label }}</a>
+          }
+          @if (data.primaryButton) {
+            <a
+              [href]="data.primaryButton.href"
+              class="btn btn--primary"
+              [attr.aria-label]="data.primaryButton.label"
+            >{{ data.primaryButton.label }}</a>
+          }
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

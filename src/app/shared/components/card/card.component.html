@@ -1,0 +1,29 @@
+<article class="card" [attr.aria-label]="card.title">
+  <div class="card__image-wrapper">
+    <img
+      [src]="card.image"
+      [alt]="card.imageAlt"
+      class="card__image"
+      loading="lazy"
+    />
+    <span class="card__category">{{ card.category }}</span>
+  </div>
+
+  <div class="card__body">
+    <div class="card__meta">
+      <span class="card__date">{{ card.date }}</span>
+      <span class="card__divider" aria-hidden="true">·</span>
+      <span class="card__read-time">{{ card.readTime }}</span>
+    </div>
+
+    <h3 class="card__title">{{ card.title }}</h3>
+    <p class="card__excerpt">{{ card.excerpt }}</p>
+
+    <a [href]="card.link || '#'" class="card__link" [attr.aria-label]="'Read more about ' + card.title">
+      Read More
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</article>

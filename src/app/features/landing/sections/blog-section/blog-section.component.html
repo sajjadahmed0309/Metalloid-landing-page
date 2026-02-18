@@ -1,0 +1,22 @@
+<section class="blog-section section" id="blog" aria-label="Blog and insights">
+  <div class="container">
+    <app-section-header
+      subheading="Insights"
+      heading="Latest News & Articles"
+      description="Stay informed with the latest developments in mining, infrastructure, and industrial innovation from the Metalloid team."
+      theme="light"
+    />
+
+    <div class="blog-section__grid">
+      @for (card of blogCards; track card.title) {
+        <app-card [card]="card" />
+      }
+    </div>
+
+    <div class="blog-section__cta">
+      <app-button variant="outline" size="md" ariaLabel="View all articles">
+        View All Articles
+      </app-button>
+    </div>
+  </div>
+</section>
