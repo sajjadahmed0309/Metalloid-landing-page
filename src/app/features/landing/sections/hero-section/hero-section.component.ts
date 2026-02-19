@@ -68,7 +68,7 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
   private startAutoplay(): void {
     this.intervalId = setInterval(() => {
       this.activeSlide.update(i => (i + 1) % this.slides.length);
-    }, 5000);
+    }, 3000);
   }
 
   private stopAutoplay(): void {

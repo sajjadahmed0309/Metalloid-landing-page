@@ -3,7 +3,7 @@
   --color-primary: #b91c1c;
   --color-primary-dark: #991b1b;
   --color-primary-light: #dc2626;
-  --color-dark: #0d0f1a;
+  --color-dark: #0C111D;
   --color-dark-navy: #111827;
   --color-dark-secondary: #1a2133;
   --color-dark-tertiary: #263148;
@@ -823,7 +823,6 @@ app-root {
     object-position: 55% center;
   }
 }
-/* Pulse animation for map marker outer ring */
 @keyframes mapMarkerPulse {
   0%, 100% { opacity: 0.35; transform: scale(1); }
   50%       { opacity: 0.12; transform: scale(1.35); }
@@ -887,7 +886,6 @@ app-root {
   from { opacity: 0; transform: translateX(-50%) translateY(4px); }
   to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
-/* Down-pointing arrow */
 .map-section__tooltip::after {
   content: '';
   position: absolute;

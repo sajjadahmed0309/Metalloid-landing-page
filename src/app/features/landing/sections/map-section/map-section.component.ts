@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 export interface MapMarker {
   id: string;
@@ -18,7 +17,7 @@ export interface MapTab {
 @Component({
   selector: 'app-map-section',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './map-section.component.html',
 })
 export class MapSectionComponent {
@@ -51,7 +50,7 @@ export class MapSectionComponent {
           id: 'cameroon',
           city: 'Cameroon',
           address: 'Exploration office, Yaoundé',
-          top: '59%',
+          top: '58%',
           left: '21%',
         },
       ],
@@ -71,7 +70,7 @@ export class MapSectionComponent {
           id: 'guinea',
           city: 'Guinea',
           address: 'Bauxite exploration, Conakry',
-          top: '54%',
+          top: '52%',
           left: '10%',
         },
       ],
@@ -93,9 +92,5 @@ export class MapSectionComponent {
 
   toggleMarker(id: string): void {
     this.activeMarkerId.update(current => (current === id ? null : id));
-  }
-
-  getMarkerData(id: string): MapMarker | undefined {
-    return this.activeTab.markers.find(m => m.id === id);
   }
 }
