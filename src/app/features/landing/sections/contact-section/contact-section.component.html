@@ -69,15 +69,32 @@
 
           <div class="contact__field">
             <label class="contact__label" for="phone">Phone number</label>
-            <div class="contact__phone-wrapper">
-              <span class="contact__phone-prefix">UAE</span>
+            <div
+              class="contact__phone-wrapper"
+              [class.contact__phone-wrapper--error]="isInvalid('phone')"
+            >
+              <div class="contact__country-select">
+                <span class="contact__country-label">{{ selectedCountry().name }}</span>
+                <svg class="contact__country-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <select
+                  class="contact__country-dropdown"
+                  [value]="selectedCountry().iso"
+                  (change)="selectCountry($any($event.target).value)"
+                  aria-label="Select country code"
+                >
+                  @for (country of countries; track country.iso) {
+                    <option [value]="country.iso">{{ country.name }} ({{ country.dial }})</option>
+                  }
+                </select>
+              </div>
               <input
                 id="phone"
                 type="tel"
                 class="contact__input contact__input--phone"
-                [class.contact__input--error]="isInvalid('phone')"
                 formControlName="phone"
-                placeholder="+971 000-000-000"
+                [placeholder]="phonePlaceholder()"
                 autocomplete="tel"
               />
             </div>
